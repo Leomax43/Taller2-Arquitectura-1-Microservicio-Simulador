@@ -65,14 +65,14 @@ docker compose up -d
 Antes de iniciar la aplicación, Maven debe compilar el archivo .proto y generar las clases base.
 
 Bash
-./mvnw clean compile
+.\mvnw.cmd clean compile
 En Windows utiliza .\mvnw.cmd clean compile. Si da error de "No compiler provided", asegúrate de tener instalada una JDK(17) y configurada la variable JAVA_HOME.
 
 3. Iniciar el Servidor
 Levanta la aplicación Spring Boot:
 
 Bash
-./mvnw spring-boot:run
+.\mvnw.cmd spring-boot:run
 
 Verás en los logs que Hibernate crea la tabla builds y gRPC comienza a escuchar en el puerto 9090.
 
@@ -117,7 +117,7 @@ Checklist de avance
 
 [x] Levantar base de datos aislada vía Docker Compose.
 
-[ ] Implementar Tests Unitarios (JUnit/Mockito) para superar 60% coverage.
+[X] Implementar Tests Unitarios (JUnit/Mockito) para superar 60% coverage.
 
 [ ] Dockerfile.
 
