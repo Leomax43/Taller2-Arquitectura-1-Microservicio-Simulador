@@ -16,7 +16,8 @@ message SimulacionRequest {
   int32 gpu_tdp_watts = 3;
   int32 gpu_benchmark_score = 4;
   string resolucion = 5; 
-  int32 psu_watts = 6;   
+  int32 psu_watts = 6;
+  string user_id = 7;   
 }
 
 message SimulacionResponse {
