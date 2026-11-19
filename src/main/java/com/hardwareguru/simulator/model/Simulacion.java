@@ -58,4 +58,36 @@ public class Simulacion {
 
     public LocalDateTime getFechaCreacion() { return fechaCreacion; }
     public void setFechaCreacion(LocalDateTime fechaCreacion) { this.fechaCreacion = fechaCreacion; }
+
+
+
+
+    //nuevo endpoint de guardado
+    private String nombreBuild;
+    private String cpuNombre;
+    private String placaMadreNombre;
+    private String ramNombre;
+    private String gpuNombre;
+    private String fuenteNombre;
+
+    // Getters y Setters para los nuevos campos
+    public String getNombreBuild() { return nombreBuild; }
+    public void setNombreBuild(String nombreBuild) { this.nombreBuild = nombreBuild; }
+
+    public String getCpuNombre() { return cpuNombre; }
+    public void setCpuNombre(String cpuNombre) { this.cpuNombre = cpuNombre; }
+
+    public String getPlacaMadreNombre() { return placaMadreNombre; }
+    public void setPlacaMadreNombre(String placaMadreNombre) { this.placaMadreNombre = placaMadreNombre; }
+
+    public String getRamNombre() { return ramNombre; }
+    public void setRamNombre(String ramNombre) { this.ramNombre = ramNombre; }
+
+    public String getGpuNombre() { return gpuNombre; }
+    public void setGpuNombre(String gpuNombre) { this.gpuNombre = gpuNombre; }
+
+    public String getFuenteNombre() { return fuenteNombre; }
+    public void setFuenteNombre(String fuenteNombre) { this.fuenteNombre = fuenteNombre; }
+
+
 }

@@ -8,6 +8,5 @@ import java.util.List;
 
 @Repository
 public interface SimulacionRepository extends JpaRepository<Simulacion, Long> {
-    // Si más adelante quieres buscar el historial de un usuario específico:
     List<Simulacion> findByUserId(String userId);
 }

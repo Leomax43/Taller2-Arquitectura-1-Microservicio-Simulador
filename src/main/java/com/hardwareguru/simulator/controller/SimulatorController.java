@@ -9,6 +9,11 @@ import org.springframework.web.bind.annotation.*;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.hardwareguru.simulator.dto.GuardarBuildRequest;
+import java.util.List;
+
+
+
 @RestController
 @RequestMapping("/api/simulador")
 public class SimulatorController {
@@ -84,4 +89,50 @@ public class SimulatorController {
 
         return response;
     }
+
+
+
+    @PostMapping("/builds")
+    public Simulacion guardarBuild(
+            @RequestHeader(value = "x-user-id", required = false) String headerUserId,
+            @RequestBody GuardarBuildRequest request) {
+
+        // Usa el header del API Gateway si viene presente; si no, el userId del JSON
+        String userIdFinal = (headerUserId != null && !headerUserId.isEmpty())
+                ? headerUserId
+                : request.getUserId();
+
+        Simulacion build = new Simulacion();
+        build.setUserId(userIdFinal);
+        build.setNombreBuild(request.getNombreBuild());
+        build.setCpuNombre(request.getCpuNombre());
+        build.setPlacaMadreNombre(request.getPlacaMadreNombre());
+        build.setRamNombre(request.getRamNombre());
+        build.setGpuNombre(request.getGpuNombre());
+        build.setFuenteNombre(request.getFuenteNombre());
+        build.setCpuTdpWatts(request.getCpuTdpWatts());
+        build.setGpuTdpWatts(request.getGpuTdpWatts());
+        build.setPsuWatts(request.getPsuWatts());
+        build.setResolucion(request.getResolucion());
+        build.setConsumoTotalEstimado(request.getConsumoTotalEstimado());
+        build.setCuelloBotellaPorcentaje(request.getCuelloBotellaPorcentaje());
+        build.setEstadoRiesgo(request.getEstadoRiesgo());
+
+        return simulacionRepository.save(build);
+    }
+
+    @GetMapping("/builds/{userId}")
+    public List<Simulacion> obtenerBuildsPorUsuario(@PathVariable String userId) {
+        return simulacionRepository.findByUserId(userId);
+    }
+
+    @DeleteMapping("/builds/{id}")
+    public Map<String, String> eliminarBuild(@PathVariable Long id) {
+        simulacionRepository.deleteById(id);
+        Map<String, String> response = new HashMap<>();
+        response.put("mensaje", "Build eliminada correctamente");
+        return response;
+    }
+
+    
 }
